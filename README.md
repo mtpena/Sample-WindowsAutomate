@@ -1,1 +1,1 @@
-# Sample-WindowsUpdate
+# Sample-WindowsAutomate
