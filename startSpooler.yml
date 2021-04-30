@@ -1,0 +1,10 @@
+---
+- name: Start a service
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Start spooler
+    win_service:
+      name: spooler
+      start_mode: auto
+      state: started
