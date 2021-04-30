@@ -1,6 +1,6 @@
 ---
 - name: Stop a service
-  hosts: all
+  hosts: localhost
   gather_facts: false
   tasks:
   - name: Stop spooler
