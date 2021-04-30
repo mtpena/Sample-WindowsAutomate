@@ -1,0 +1,9 @@
+---
+- name: Stop a service
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Stop spooler
+    win_service:
+      name: spooler
+      state: stopped
