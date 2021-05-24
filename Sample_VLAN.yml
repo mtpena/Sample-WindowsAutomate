@@ -1,0 +1,20 @@
+---
+- name: Sample VLAN
+  hosts: localhost
+  gather_facts: false
+  vars:
+    aci_host: 198.18.133.200
+    aci_username: admin
+    aci_password: C1sco12345
+  
+  tasks:
+
+  - name: Add a new VLAN pool
+    aci_vlan_pool:
+        host: '{{ aci_host }}'
+        username: '{{ aci_username }}'
+        password: '{{ aci_password }}'
+        pool: 'Sample_VLAN'
+        pool_allocation_mode: dynamic
+        description: Production VLANs
+        state: present

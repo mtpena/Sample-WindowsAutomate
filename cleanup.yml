@@ -1,0 +1,41 @@
+---
+- name: Sample Access Policy
+  hosts: localhost
+  gather_facts: false
+  vars:
+    aci_host: 198.18.133.200
+    aci_username: admin
+    aci_password: C1sco12345
+  
+  tasks:
+  - name: Delete Policy Group for VPC List
+    aci_interface_policy_leaf_policy_group:
+      host: '{{ aci_host }}'
+      username: '{{ aci_username }}'
+      password: '{{ aci_password }}'
+      certificate_name: admin
+      validate_certs: no
+      lag_type: node
+      policy_group: '{{ item }}'
+      link_level_policy: 10G_Auto
+      cdp_policy: CDP_Enabled
+      lldp_policy: LLDP_Enabled
+      port_channel_policy: LACP_Enabled
+      state: absent
+    with_sequence: start=1 end=5 format=Sample%02d
+
+  - name: Delete Policy Group for Single VPC
+    aci_interface_policy_leaf_policy_group:
+      host: '{{ aci_host }}'
+      username: '{{ aci_username }}'
+      password: '{{ aci_password }}'
+      certificate_name: admin
+      validate_certs: no
+      lag_type: node
+      policy_group: 'Server01'
+      link_level_policy: 10G_Auto
+      cdp_policy: CDP_Enabled
+      lldp_policy: LLDP_Enabled
+      port_channel_policy: LACP_Enabled
+      state: absent
+#   delegate_to: localhost
