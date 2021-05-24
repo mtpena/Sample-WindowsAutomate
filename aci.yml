@@ -1,0 +1,4 @@
+---
+  plugin: zjpeterson.aci.aci_inventory
+  host: 198.18.133.200
+  validate_certs: no
